@@ -1,0 +1,99 @@
+ System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace moje_práce
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            string Konec = "";
+
+            bool opakovani = false;
+
+            string cisloUzivateleSlovo;
+
+            long cisloUzivatele;
+
+            do
+            {
+
+                do
+                {
+
+                    cisloUzivatele = 0;
+
+                    try
+                    {
+
+                        Console.WriteLine();
+                        Console.WriteLine("Napište číslo");
+                        Console.WriteLine();
+
+                        cisloUzivateleSlovo = Console.ReadLine();
+                        Int64.TryParse(cisloUzivateleSlovo, out cisloUzivatele);
+
+                        opakovani = false;
+
+                    }
+                    catch 
+                    {
+
+                        opakovani = true;
+
+                    }
+
+                } while (opakovani == true);
+
+                Console.WriteLine();
+                Console.WriteLine("Číslo " + cisloUzivatele + " Lze násobit 1 x " + cisloUzivatele + ".");
+
+                long KontrolaVyssichCisel = cisloUzivatele / 2 + 1;
+                long KontrolaVyssichCisel2 = KontrolaVyssichCisel;
+
+                for (long i = 0; i <= KontrolaVyssichCisel; i++)
+                {
+
+                    for (long j = 2; j <= KontrolaVyssichCisel2; j++)
+                    {
+
+                        long cislo = j + i;
+
+                        long Vysledek = i * cislo;
+
+                        if (Vysledek == cisloUzivatele)
+                        {
+
+                            Console.WriteLine("Číslo " + cisloUzivatele + " Lze násobit " + i + " x " + cislo + ".");
+
+                            j = KontrolaVyssichCisel2;
+
+                        }
+
+                        if (cisloUzivatele < Vysledek)
+                        {
+
+                            j = KontrolaVyssichCisel2++;
+
+                        }
+
+                    }
+
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Chcete vypočítat další příklad? Pokud ano stiskněte: ENTER");
+                Console.WriteLine();
+
+            } while (string.Equals(Konec,""));
+
+        }
+
+    }
+
+}
